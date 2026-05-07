@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optima Solución — Ingeniería / Arquitectura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0e2538;
+      --teal:   #1d6e6e;
+      --teal-l: #3a9999;
+      --accent: #e05e3a;
+      --bg:     #f9fafb;
+      --white:  #ffffff;
+      --text:   #1a2733;
+      --muted:  #6b7a85;
+      --border: #e2e8ed;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 64px;
+      background: rgba(255,255,255,.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      width: 42px; height: 42px;
+      object-fit: cover; object-position: 28% 50%;
+      border-radius: 6px;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,.15));
+    }
+    .nav-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 14px;
+      color: var(--navy); line-height: 1.1;
+    }
+    .nav-name span {
+      display: block; font-family: 'Inter', sans-serif;
+      font-weight: 400; font-size: 11px;
+      color: var(--teal); letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--navy); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      align-items: center;
+      padding: 80px 0 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-text {
+      padding: 60px 5vw 60px 6vw;
+      max-width: 580px;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 28px;
+    }
+    .hero-tag::before { content: ''; width: 28px; height: 2px; background: var(--teal); }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(44px, 5vw, 74px);
+      font-weight: 800; line-height: 1.0;
+      color: var(--navy); margin-bottom: 24px;
+    }
+    h1 em { font-style: normal; color: var(--teal); }
+    .hero-desc { font-size: 17px; color: var(--muted); margin-bottom: 44px; line-height: 1.75; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 6px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-1px); }
+    .btn-outline { border: 1.5px solid var(--border); color: var(--navy); }
+    .btn-outline:hover { border-color: var(--navy); transform: translateY(-1px); }
+
+    .hero-cover {
+      height: 100vh;
+      position: relative; overflow: hidden;
+    }
+    .hero-cover img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+    }
+    .hero-cover::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 30%);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 5vw; }
+    .section-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--teal);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 800; color: var(--navy); margin-bottom: 20px; line-height: 1.1;
+    }
+    .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; margin-bottom: 60px; line-height: 1.75; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-text p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+    .about-text p strong { color: var(--navy); font-weight: 600; }
+    .about-img {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(14,37,56,.12);
+      aspect-ratio: 4/3; position: relative;
+    }
+    .about-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 35%;
+    }
+    .normas-strip { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .norma-badge {
+      padding: 7px 16px; border-radius: 30px;
+      border: 1.5px solid var(--border);
+      font-size: 12px; font-weight: 600; color: var(--muted);
+      transition: all .2s;
+    }
+    .norma-badge:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: var(--navy); border-radius: 14px;
+      overflow: hidden; margin-top: 60px;
+    }
+    .stat-item {
+      padding: 36px 28px; border-right: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 38px; font-weight: 800; color: #fff; line-height: 1;
+    }
+    .stat-num span { font-size: 22px; color: var(--teal-l); }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 6px; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 32px 28px;
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--teal); border-radius: 12px 0 0 12px;
+      transform: scaleY(0); transform-origin: bottom; transition: transform .25s;
+    }
+    .service-card:hover { border-color: transparent; box-shadow: 0 8px 32px rgba(14,37,56,.1); transform: translateY(-3px); }
+    .service-card:hover::before { transform: scaleY(1); }
+    .svc-icon { width: 44px; height: 44px; background: #eef6f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 22px; }
+    .svc-title { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 6px; }
+    .svc-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--white); }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+
+    .project-card {
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: all .3s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover { box-shadow: 0 16px 48px rgba(14,37,56,.14); transform: translateY(-5px); border-color: transparent; }
+
+    .project-img {
+      position: relative; overflow: hidden;
+      height: 240px;
+    }
+    .project-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+    .project-card:hover .project-img img { transform: scale(1.04); }
+
+    /* Crop left or right half for split-page images */
+    .crop-left  img { object-position: 0% center; }
+    .crop-right img { object-position: 100% center; }
+    /* Residential render: right side, top portion */
+    .crop-render img { object-position: 100% 0%; }
+
+    .project-body { padding: 28px 28px 32px; flex: 1; }
+    .project-client { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+    .project-title { font-weight: 700; font-size: 17px; color: var(--navy); line-height: 1.3; margin-bottom: 12px; }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: 11px; font-weight: 500; padding: 4px 11px; border-radius: 20px; background: #eef6f6; color: var(--teal); }
+
+    /* Accent strip per project */
+    .strip { height: 4px; }
+    .s-teal   { background: linear-gradient(90deg, var(--teal), var(--teal-l)); }
+    .s-orange { background: linear-gradient(90deg, var(--accent), #f4a35a); }
+    .s-navy   { background: linear-gradient(90deg, var(--navy), var(--teal)); }
+    .s-pink   { background: linear-gradient(90deg, #e8908a, var(--accent)); }
+
+    /* ── PRESENCE ── */
+    #presence { background: var(--navy); }
+    #presence .section-tag { color: var(--teal-l); }
+    #presence .section-tag::before { background: var(--teal-l); }
+    #presence h2 { color: var(--white); }
+    #presence .section-sub { color: rgba(255,255,255,.55); }
+    .presence-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+    .pres-card {
+      border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 32px 24px;
+      transition: all .25s; text-align: center;
+    }
+    .pres-card:hover { background: rgba(255,255,255,.06); border-color: var(--teal-l); }
+    .pres-icon { font-size: 30px; margin-bottom: 14px; }
+    .pres-name { font-weight: 700; font-size: 16px; color: var(--white); }
+    .pres-sub { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 4px; }
+
+    /* ── CLIENTS ── */
+    #clients { background: var(--bg); }
+    .clients-strip { display: flex; align-items: center; gap: 56px; flex-wrap: wrap; }
+    .client-item {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 22px;
+      color: var(--border); transition: color .25s; cursor: default; letter-spacing: -0.5px;
+    }
+    .client-item:hover { color: var(--navy); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .contact-info p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 36px; }
+    .contact-items { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 10px; transition: all .2s;
+    }
+    .contact-item:hover { border-color: var(--teal); }
+    .c-icon { width: 42px; height: 42px; border-radius: 8px; background: #eef6f6; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+    .c-label { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: .5px; text-transform: uppercase; }
+    .c-value { font-size: 15px; color: var(--navy); font-weight: 600; margin-top: 2px; }
+    .c-value a { color: inherit; text-decoration: none; }
+    .c-value a:hover { color: var(--teal); }
+
+    .contact-visual {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(14,37,56,.12);
+      aspect-ratio: 16/10; position: relative;
+    }
+    .contact-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 60% 50%;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 32px; font-size: 13px; }
+    footer strong { color: rgba(255,255,255,.75); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-cover { height: 55vw; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .stat-item { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <img class="nav-logo-img" src="images/portfolio/page1.png" alt="OPS Logo" />
+    <div class="nav-name">
+      Optima Solución
+      <span>Ingeniería / Arquitectura</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#presence">Presencia</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-tag">Ingeniería · Arquitectura · Telecomunicaciones</div>
+    <h1>Óptima<br /><em>Solución</em></h1>
+    <p class="hero-desc">
+      Diseño y desarrollo de proyectos ejecutivos e ingenierías en telecomunicaciones,
+      integrados bajo normas de ALTAN, AT&amp;T, Axtel, Total Play y CFE.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">Ver proyectos</a>
+      <a class="btn btn-outline" href="#contact">Contactar</a>
+    </div>
+  </div>
+  <div class="hero-cover">
+    <img src="images/portfolio/page1.png" alt="Optima Solución portada" />
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-tag">Nosotros somos</div>
+      <h2>OP Solución</h2>
+      <p>
+        Empresa dedicada al desarrollo y diseño de proyectos ejecutivos e ingenierías en el ramo de
+        las <strong>telecomunicaciones</strong>, bajo las normas constructivas y técnicas de
+        <strong>ALTAN Redes, AT&amp;T, Axtel, Total Play y CFE</strong>.
+      </p>
+      <p>
+        Nuestra misión es optimizar e integrar los detalles estructurales, de F.O., eléctrico y
+        sistema de tierras en un proyecto sostenible. Nos involucramos desde el levantamiento de sitio
+        en estado actual.
+      </p>
+      <p>
+        Nuestra propuesta arquitectónica se desarrolla además en el ramo <strong>residencial</strong>
+        en toda el área del sureste de México.
+      </p>
+      <div class="normas-strip">
+        <span class="norma-badge">ALTAN Redes</span>
+        <span class="norma-badge">AT&amp;T</span>
+        <span class="norma-badge">Axtel</span>
+        <span class="norma-badge">Total Play</span>
+        <span class="norma-badge">CFE</span>
+      </div>
+    </div>
+    <div class="about-img">
+      <img src="images/portfolio/page2.png" alt="Nosotros somos" />
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">40<span>+</span></div>
+      <div class="stat-label">Sitios levantados Even Telecom</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">48<span>m</span></div>
+      <div class="stat-label">Torre autosoportada diseñada</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Zonas con presencia local</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Líneas de servicio</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">Lo que hacemos</div>
+  <h2>Servicios</h2>
+  <p class="section-sub">
+    Soluciones integrales desde el levantamiento inicial hasta la entrega del proyecto ejecutivo,
+    abarcando todas las disciplinas de ingeniería y arquitectura.
+  </p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-icon">📐</div>
+      <div class="svc-title">Levantamientos EA</div>
+      <div class="svc-desc">Levantamiento de estado actual en sitio con documentación técnica detallada.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🏗️</div>
+      <div class="svc-title">Ingenierías, AP y PE</div>
+      <div class="svc-desc">Anteproyecto y proyecto ejecutivo de ingeniería bajo normas de operadoras.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🔍</div>
+      <div class="svc-title">Dictamen Estructural</div>
+      <div class="svc-desc">Evaluación y dictamen de estructuras existentes para adecuaciones telecom.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🌱</div>
+      <div class="svc-title">Mecánicas de Suelos</div>
+      <div class="svc-desc">Estudios de mecánica de suelos para fundaciones y cimentaciones seguras.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">⚡</div>
+      <div class="svc-title">Proyecto Eléctrico</div>
+      <div class="svc-desc">Diseño de instalaciones eléctricas para infraestructura de telecomunicaciones.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🔌</div>
+      <div class="svc-title">Sistema de Tierras</div>
+      <div class="svc-desc">Diseño e implementación de sistemas de puesta a tierra bajo normativa vigente.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">💡</div>
+      <div class="svc-title">Fibra Óptica</div>
+      <div class="svc-desc">Proyecto e implementación de redes de fibra óptica para operadores telecom.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🏠</div>
+      <div class="svc-title">Arquitectónico</div>
+      <div class="svc-desc">Proyectos residenciales en el sureste de México para clientes particulares.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">Portafolio</div>
+  <h2>Proyectos destacados</h2>
+  <p class="section-sub">
+    Proyectos ejecutivos desarrollados para los principales operadores de telecomunicaciones
+    en México y para el sector residencial en el sureste.
+  </p>
+  <div class="projects-grid">
+
+    <!-- MTP Pavoreal -->
+    <div class="project-card">
+      <div class="strip s-teal"></div>
+      <div class="project-img crop-left">
+        <img src="images/portfolio/page3.png" alt="MTP Pavoreal Torre Arriostrada" />
+      </div>
+      <div class="project-body">
+        <div class="project-client">MTP</div>
+        <div class="project-title">Torre Arriostrada 20m — Pavoreal</div>
+        <p class="project-desc">
+          Torre arriostrada de 20 metros sobre establecimiento comercial. Proyecto AS-BUILT
+          con planta arquitectónica, sistema de tierras y detalles estructurales integrados.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Torre Arriostrada</span>
+          <span class="tag">AS-BUILT</span>
+          <span class="tag">AT&amp;T</span>
+          <span class="tag">20m</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Even Telecom F.O. -->
+    <div class="project-card">
+      <div class="strip s-orange"></div>
+      <div class="project-img crop-right">
+        <img src="images/portfolio/page3.png" alt="Even Telecom Fibra Óptica" />
+      </div>
+      <div class="project-body">
+        <div class="project-client">Even Telecom</div>
+        <div class="project-title">Implementación F.O. — +40 Sitios</div>
+        <p class="project-desc">
+          Levantamiento, proyecto ejecutivo e implementación de fibra óptica en más de
+          40 sitios bajo norma AT&amp;T para Even Telecom en toda la región.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Fibra Óptica</span>
+          <span class="tag">Levantamiento</span>
+          <span class="tag">PE</span>
+          <span class="tag">AT&amp;T</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CenterLine Torre -->
+    <div class="project-card">
+      <div class="strip s-navy"></div>
+      <div class="project-img crop-left">
+        <img src="images/portfolio/page4.png" alt="CenterLine Torre Autosoportada 48m" />
+      </div>
+      <div class="project-body">
+        <div class="project-client">Center Line</div>
+        <div class="project-title">Torre Autosoportada 48m — Norma ALTÁN</div>
+        <p class="project-desc">
+          Diseño estructural completo de torre autosoportada de 48 metros con equipos en
+          torre bajo norma de ALTÁN Redes. Incluye PA-CP, EQ, FO, E y TF.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Autosoportada</span>
+          <span class="tag">48m</span>
+          <span class="tag">ALTÁN</span>
+          <span class="tag">Huawei</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CenterLine Residencial -->
+    <div class="project-card">
+      <div class="strip s-pink"></div>
+      <div class="project-img crop-render">
+        <img src="images/portfolio/page4.png" alt="Proyecto Residencial Sureste" />
+      </div>
+      <div class="project-body">
+        <div class="project-client">Residencial</div>
+        <div class="project-title">Proyectos Arquitectónicos — Sureste</div>
+        <p class="project-desc">
+          Desarrollo de proyectos residenciales en el sureste de México con planta
+          arquitectónica completa, renders exteriores e interiores y propuesta de diseño contemporáneo.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Residencial</span>
+          <span class="tag">Arquitectura</span>
+          <span class="tag">Renders</span>
+          <span class="tag">Sureste MX</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="section-tag">Con quienes trabajamos</div>
+  <h2>Clientes</h2>
+  <p class="section-sub">Empresas líderes del sector telecom que confían en nuestros proyectos ejecutivos.</p>
+  <div class="clients-strip">
+    <div class="client-item">MTP</div>
+    <div class="client-item">Even Telecom</div>
+    <div class="client-item">Center Line</div>
+  </div>
+</section>
+
+<!-- PRESENCE -->
+<section id="presence">
+  <div class="section-tag">Dónde estamos</div>
+  <h2>Presencia nacional</h2>
+  <p class="section-sub">Contamos con presencia local para brindar atención directa en sitio y garantizar calidad en cada proyecto.</p>
+  <div class="presence-grid">
+    <div class="pres-card">
+      <div class="pres-icon">🏙️</div>
+      <div class="pres-name">CDMX</div>
+      <div class="pres-sub">Ciudad de México</div>
+    </div>
+    <div class="pres-card">
+      <div class="pres-icon">🌿</div>
+      <div class="pres-name">Mérida</div>
+      <div class="pres-sub">Yucatán</div>
+    </div>
+    <div class="pres-card">
+      <div class="pres-icon">🌊</div>
+      <div class="pres-name">Cancún</div>
+      <div class="pres-sub">Quintana Roo</div>
+    </div>
+    <div class="pres-card">
+      <div class="pres-icon">🗺️</div>
+      <div class="pres-name">República</div>
+      <div class="pres-sub">Resto del país</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag">Hablemos</div>
+      <h2>Contacto</h2>
+      <p>
+        ¿Tienes un proyecto de telecomunicaciones o arquitectura? Estamos listos para
+        acompañarte desde el levantamiento hasta la entrega del proyecto ejecutivo.
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="c-icon">👤</div>
+          <div>
+            <div class="c-label">Contacto</div>
+            <div class="c-value">Yamil Herrera</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Teléfono</div>
+            <div class="c-value"><a href="tel:9993097049">9993 097049</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Correo</div>
+            <div class="c-value"><a href="mailto:opsolucion@gmail.com">opsolucion@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-visual">
+      <img src="images/portfolio/page5.png" alt="Optima Solución contacto" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Optima Solución</strong> — Ingeniería / Arquitectura &nbsp;·&nbsp;
+  opsolucion@gmail.com &nbsp;·&nbsp; 9993 097049
+</footer>
+
+</body>
+</html>
