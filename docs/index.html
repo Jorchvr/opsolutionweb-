@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="theme-apple">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,6 +42,18 @@
       --navy: #000000; --teal: #000000; --teal-l: #333333;
       --accent: #ff0000; --muted: #333333; --border: #000000;
       --card-bg: #ffffff;
+    }
+    html.theme-cyberpunk {
+      --bg: #0a0a0f; --white: #0d0d1a; --text: #c8c8ff;
+      --navy: #00e5ff; --teal: #ff0090; --teal-l: #ff44bb;
+      --accent: #00e5ff; --muted: #7070a0; --border: rgba(0,229,255,0.25);
+      --card-bg: rgba(0,229,255,0.03); --hero-overlay: linear-gradient(to right, #0a0a0f 0%, transparent 55%);
+    }
+    html.theme-minimal {
+      --bg: #fafafa; --white: #ffffff; --text: #111111;
+      --navy: #111111; --teal: #555555; --teal-l: #777777;
+      --accent: #111111; --muted: #888888; --border: #e0e0e0;
+      --card-bg: #ffffff; --hero-overlay: linear-gradient(to right, #fafafa 0%, transparent 60%);
     }
 
     /* ═══════════════════════════════════════════
@@ -571,7 +583,9 @@
     .swatch-apple    { background: linear-gradient(135deg, #000 0%, #1d1d1f 45%, #2997ff 100%); }
     .swatch-linear   { background: linear-gradient(135deg, #0f0f23 0%, #17172e 45%, #5e6ad2 100%); }
     .swatch-raycast  { background: linear-gradient(135deg, #111 0%, #1c1c1e 45%, #ff6b35 100%); }
-    .swatch-brutalist { background: #ffee00; border: 2px solid #000; }
+    .swatch-brutalist  { background: #ffee00; border: 2px solid #000; }
+    .swatch-cyberpunk  { background: linear-gradient(135deg, #0a0a0f 0%, #0d0d1a 45%, #00e5ff 100%); border: 1px solid rgba(0,229,255,0.5); }
+    .swatch-minimal    { background: #ffffff; border: 1px solid #ccc; }
 
     .theme-btn-name { font-weight: 700; font-size: 13px; color: var(--navy); line-height: 1.2; }
     .theme-btn-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
@@ -975,6 +989,346 @@
       .bp-center { width: 88%; }
       .rc-bar { max-width: 100%; }
     }
+
+    /* ═══════════════════════════════════════════
+       CYBERPUNK THEME
+    ═══════════════════════════════════════════ */
+    html.theme-cyberpunk body {
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,229,255,0.012) 2px, rgba(0,229,255,0.012) 4px);
+    }
+    html.theme-cyberpunk nav { background: rgba(10,10,15,0.93); border-bottom: 1px solid rgba(0,229,255,0.3); box-shadow: 0 0 30px rgba(0,229,255,0.06); }
+    html.theme-cyberpunk .hero { background: #0a0a0f; }
+    html.theme-cyberpunk .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 80% 20%, rgba(0,229,255,0.1) 0%, transparent 50%),
+                  radial-gradient(ellipse at 10% 80%, rgba(255,0,144,0.07) 0%, transparent 50%);
+    }
+    html.theme-cyberpunk h1 { color: #00e5ff; font-size: clamp(44px,5.5vw,80px); letter-spacing: -1px; text-shadow: 0 0 30px rgba(0,229,255,0.45), 0 0 60px rgba(0,229,255,0.15); }
+    html.theme-cyberpunk h1 em { color: #ff0090; -webkit-text-fill-color: #ff0090; text-shadow: 0 0 30px rgba(255,0,144,0.45); }
+    html.theme-cyberpunk h2 { color: #00e5ff; }
+    html.theme-cyberpunk .section-tag { color: #ff0090; }
+    html.theme-cyberpunk .section-tag::before { background: #ff0090; }
+    html.theme-cyberpunk .btn-primary { background: transparent; color: #00e5ff; border: 2px solid #00e5ff; box-shadow: 0 0 18px rgba(0,229,255,0.25), inset 0 0 18px rgba(0,229,255,0.04); border-radius: 4px; }
+    html.theme-cyberpunk .btn-primary:hover { background: rgba(0,229,255,0.08); box-shadow: 0 0 36px rgba(0,229,255,0.45); }
+    html.theme-cyberpunk .btn-outline { border: 2px solid rgba(255,0,144,0.5); color: #ff0090; border-radius: 4px; }
+    html.theme-cyberpunk .btn-outline:hover { border-color: #ff0090; box-shadow: 0 0 18px rgba(255,0,144,0.3); }
+    html.theme-cyberpunk .service-card { background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.14); border-radius: 6px; }
+    html.theme-cyberpunk .service-card:hover { border-color: rgba(0,229,255,0.5); box-shadow: 0 0 32px rgba(0,229,255,0.15); transform: translateY(-3px); }
+    html.theme-cyberpunk .service-card::before { background: #00e5ff; border-radius: 6px 0 0 6px; }
+    html.theme-cyberpunk .svc-icon { background: rgba(0,229,255,0.08); border-radius: 6px; }
+    html.theme-cyberpunk .project-card { border: 1px solid rgba(0,229,255,0.12); }
+    html.theme-cyberpunk .project-card:hover { box-shadow: 0 0 40px rgba(0,229,255,0.1); }
+    html.theme-cyberpunk #about { background: #0d0d1a; }
+    html.theme-cyberpunk .about-img { box-shadow: 0 0 40px rgba(0,229,255,0.15), 0 0 0 1px rgba(0,229,255,0.2); border-radius: 6px; }
+    html.theme-cyberpunk .norma-badge { border-color: rgba(0,229,255,0.2); color: rgba(0,229,255,0.65); }
+    html.theme-cyberpunk .norma-badge:hover { border-color: #00e5ff; color: #00e5ff; background: rgba(0,229,255,0.05); }
+    html.theme-cyberpunk .stats-bar { background: rgba(0,229,255,0.04); border: 1px solid rgba(0,229,255,0.2); border-radius: 6px; }
+    html.theme-cyberpunk .stat-num { color: #00e5ff; text-shadow: 0 0 20px rgba(0,229,255,0.5); }
+    html.theme-cyberpunk #services { background: #0a0a0f; }
+    html.theme-cyberpunk #projects { background: #0d0d1a; }
+    html.theme-cyberpunk #clients { background: #0a0a0f; }
+    html.theme-cyberpunk .client-item:hover { color: #00e5ff; }
+    html.theme-cyberpunk #presence { background: #060610; }
+    html.theme-cyberpunk .pres-card:hover { border-color: rgba(0,229,255,0.5); box-shadow: 0 0 30px rgba(0,229,255,0.12); }
+    html.theme-cyberpunk .bp-dot.active { background: #00e5ff; }
+    html.theme-cyberpunk #contact { background: #0d0d1a; }
+    html.theme-cyberpunk .contact-item { background: rgba(0,229,255,0.02); border-color: rgba(0,229,255,0.15); border-radius: 6px; }
+    html.theme-cyberpunk .contact-item:hover { border-color: rgba(0,229,255,0.4); box-shadow: 0 0 20px rgba(0,229,255,0.08); }
+    html.theme-cyberpunk .c-icon { background: rgba(0,229,255,0.08); border-radius: 6px; }
+    html.theme-cyberpunk .contact-visual { border-radius: 6px; box-shadow: 0 0 40px rgba(0,229,255,0.1), 0 0 0 1px rgba(0,229,255,0.2); }
+    html.theme-cyberpunk footer { background: #060610; border-top: 1px solid rgba(0,229,255,0.2); }
+    html.theme-cyberpunk .theme-btn.is-active { box-shadow: 0 0 24px rgba(0,229,255,0.4); border-color: #00e5ff; }
+    html.theme-cyberpunk .disenos-header h2 { color: #00e5ff; }
+    /* Cyberpunk cursor */
+    html.theme-cyberpunk { cursor: none; }
+    .cyber-cursor {
+      display: none; position: fixed; z-index: 9999; pointer-events: none;
+      width: 18px; height: 18px; border: 2px solid #00e5ff; border-radius: 50%;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 8px rgba(0,229,255,0.9), inset 0 0 4px rgba(0,229,255,0.3);
+      transition: width 0.15s, height 0.15s;
+    }
+    html.theme-cyberpunk .cyber-cursor { display: block; }
+
+    /* ═══════════════════════════════════════════
+       MINIMAL THEME
+    ═══════════════════════════════════════════ */
+    html.theme-minimal body { font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; }
+    html.theme-minimal h1,html.theme-minimal h2,html.theme-minimal h3 { font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight: 300; }
+    html.theme-minimal h1 { font-size: clamp(38px,4.5vw,64px); letter-spacing: -0.5px; }
+    html.theme-minimal h1 em { color: #555; -webkit-text-fill-color: #555; }
+    html.theme-minimal nav { background: #fff; border-bottom: 1px solid #e0e0e0; backdrop-filter: none; box-shadow: none; }
+    html.theme-minimal .hero { background: #fafafa; }
+    html.theme-minimal .hero-cover::after { background: none; }
+    html.theme-minimal .btn-primary { background: #111; color: #fff; border-radius: 4px; box-shadow: none; }
+    html.theme-minimal .btn-primary:hover { background: #333; transform: none; }
+    html.theme-minimal .btn-outline { border: 1px solid #bbb; color: #111; border-radius: 4px; box-shadow: none; background: #fff; }
+    html.theme-minimal .btn-outline:hover { border-color: #111; transform: none; background: #f5f5f5; }
+    html.theme-minimal .service-card { border: 1px solid #e0e0e0; box-shadow: none; border-radius: 4px; background: #fff; }
+    html.theme-minimal .service-card:hover { border-color: #999; box-shadow: none; transform: none; }
+    html.theme-minimal .service-card::before { background: #111; border-radius: 4px 0 0 4px; }
+    html.theme-minimal .svc-icon { background: #f5f5f5; border-radius: 4px; }
+    html.theme-minimal .project-card { border: 1px solid #e0e0e0; box-shadow: none; border-radius: 4px; }
+    html.theme-minimal .project-card:hover { box-shadow: none; transform: translateY(-2px); border-color: #999; }
+    html.theme-minimal .norma-badge { border-color: #ccc; color: #555; }
+    html.theme-minimal .norma-badge:hover { border-color: #111; color: #111; background: #f5f5f5; }
+    html.theme-minimal .stats-bar { background: #111; box-shadow: none; border-radius: 4px; }
+    html.theme-minimal #about { background: #fff; }
+    html.theme-minimal .about-img { border-radius: 4px; box-shadow: none; border: 1px solid #e0e0e0; }
+    html.theme-minimal #services { background: #fafafa; }
+    html.theme-minimal #projects { background: #fff; }
+    html.theme-minimal #clients { background: #fafafa; }
+    html.theme-minimal .client-item { color: rgba(0,0,0,0.12); }
+    html.theme-minimal .client-item:hover { color: #111; }
+    html.theme-minimal #presence { background: #111; }
+    html.theme-minimal .pres-card:hover { box-shadow: none; border-color: rgba(255,255,255,0.4); }
+    html.theme-minimal .bp-dot.active { background: #111; }
+    html.theme-minimal #contact { background: #fff; }
+    html.theme-minimal .contact-item { border: 1px solid #e0e0e0; border-radius: 4px; box-shadow: none; background: #fff; }
+    html.theme-minimal .contact-item:hover { border-color: #111; box-shadow: none; }
+    html.theme-minimal .c-icon { background: #f5f5f5; border-radius: 4px; }
+    html.theme-minimal .contact-visual { border-radius: 4px; box-shadow: none; border: 1px solid #e0e0e0; }
+    html.theme-minimal footer { background: #111; }
+    html.theme-minimal .theme-btn.is-active { border-color: #111; box-shadow: none; }
+
+    /* ═══════════════════════════════════════════
+       CONTACT ACTION BUTTONS (WhatsApp & Email)
+    ═══════════════════════════════════════════ */
+    .contact-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .btn-action {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; border: 1.5px solid var(--border);
+      background: var(--bg); color: var(--navy); text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-action:hover { border-color: var(--teal); transform: translateY(-1px); }
+    .btn-action svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-action-wa { border-color: rgba(37,211,102,0.45); color: #1cb454; }
+    .btn-action-wa:hover { background: rgba(37,211,102,0.08); border-color: #25D366; color: #1cb454; transform: translateY(-1px); }
+    html.theme-apple .btn-action { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); color: rgba(255,255,255,0.85); }
+    html.theme-apple .btn-action-wa { border-color: rgba(37,211,102,0.4); color: #25D366; }
+    html.theme-apple .btn-action:hover { border-color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.1); }
+    html.theme-linear .btn-action { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+    html.theme-linear .btn-action-wa { border-color: rgba(37,211,102,0.4); color: #25D366; }
+    html.theme-raycast .btn-action { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+    html.theme-brutalist .btn-action { border: 3px solid #000; background: #fff; color: #000; border-radius: 0; box-shadow: 4px 4px 0 #000; }
+    html.theme-brutalist .btn-action:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #000; }
+    html.theme-cyberpunk .btn-action { background: rgba(0,229,255,0.03); border-color: rgba(0,229,255,0.2); color: rgba(0,229,255,0.8); border-radius: 4px; }
+    html.theme-cyberpunk .btn-action:hover { border-color: rgba(0,229,255,0.5); box-shadow: 0 0 14px rgba(0,229,255,0.12); }
+    html.theme-cyberpunk .btn-action-wa { border-color: rgba(37,211,102,0.4); color: #25D366; }
+    html.theme-minimal .btn-action { border: 1px solid #ccc; border-radius: 4px; background: #fff; color: #111; }
+    html.theme-minimal .btn-action:hover { border-color: #111; transform: none; }
+
+    /* ═══════════════════════════════════════════
+       MODALS
+    ═══════════════════════════════════════════ */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 3000;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.is-open { display: flex; }
+    .modal-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; width: 100%; max-width: 460px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+      animation: modalIn 0.26s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.88) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    html.theme-cyberpunk .modal-box { border-color: rgba(0,229,255,0.3); box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 40px rgba(0,229,255,0.1); }
+    html.theme-brutalist .modal-box { border: 3px solid #000; border-radius: 0; box-shadow: 8px 8px 0 #000; }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; border-bottom: 1px solid var(--border);
+    }
+    .modal-header h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin: 0; }
+    html.theme-cyberpunk .modal-header h3 { color: #00e5ff; }
+    .modal-close {
+      width: 28px; height: 28px; border: none;
+      background: var(--bg); border-radius: 6px; cursor: pointer;
+      font-size: 16px; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, color 0.15s;
+    }
+    .modal-close:hover { background: var(--border); color: var(--navy); }
+    .modal-body { padding: 22px; }
+    .modal-body > p { font-size: 14px; color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 10px 14px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; font-size: 14px; color: var(--text);
+      font-family: 'Inter', sans-serif; outline: none; resize: vertical;
+      transition: border-color 0.2s;
+    }
+    html.theme-brutalist .form-group input, html.theme-brutalist .form-group textarea { border-radius: 0; border: 2px solid #000; }
+    html.theme-cyberpunk .form-group input, html.theme-cyberpunk .form-group textarea { border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.02); color: #c8c8ff; border-radius: 4px; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--teal); }
+    html.theme-cyberpunk .form-group input:focus, html.theme-cyberpunk .form-group textarea:focus { border-color: rgba(0,229,255,0.6); }
+    .form-group input[readonly] { opacity: 0.55; cursor: default; }
+    .form-group textarea { min-height: 110px; }
+    .modal-footer {
+      display: flex; gap: 10px; justify-content: flex-end;
+      padding: 14px 22px; border-top: 1px solid var(--border);
+      background: var(--bg); border-radius: 0 0 16px 16px;
+    }
+    html.theme-brutalist .modal-footer { border-radius: 0; }
+    .modal-footer .btn { padding: 10px 20px; font-size: 13px; }
+    .btn-wa-send {
+      background: #25D366; color: #fff; border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+    }
+    .btn-wa-send:hover { background: #1cb454; transform: translateY(-1px); }
+    html.theme-brutalist .btn-wa-send { border-radius: 0; border: 2px solid #000; box-shadow: 3px 3px 0 #000; }
+
+    /* ═══════════════════════════════════════════
+       CHATBOT WIDGET
+    ═══════════════════════════════════════════ */
+    .chat-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1800;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--teal); color: #fff; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.28);
+      transition: transform 0.25s, box-shadow 0.25s, background 0.5s;
+    }
+    .chat-fab:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(0,0,0,0.32); }
+    .chat-fab.is-open svg.icon-chat { display: none; }
+    .chat-fab svg.icon-close { display: none; }
+    .chat-fab.is-open svg.icon-close { display: block; }
+    html.theme-cyberpunk .chat-fab { background: #ff0090; box-shadow: 0 4px 22px rgba(255,0,144,0.4); }
+    html.theme-minimal .chat-fab { background: #111; }
+    html.theme-brutalist .chat-fab { border-radius: 0; border: 3px solid #fff; box-shadow: 4px 4px 0 rgba(255,255,255,0.3); }
+
+    .chat-widget {
+      position: fixed; bottom: 92px; right: 24px; z-index: 1750;
+      width: 340px; max-height: 520px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.08);
+      display: flex; flex-direction: column; overflow: hidden;
+      transform: scale(0.88) translateY(28px); opacity: 0;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease;
+      pointer-events: none;
+    }
+    .chat-widget.is-open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+    html.theme-cyberpunk .chat-widget { border-color: rgba(0,229,255,0.25); box-shadow: 0 16px 48px rgba(0,0,0,0.55), 0 0 30px rgba(0,229,255,0.1); }
+    html.theme-brutalist .chat-widget { border: 3px solid #fff; border-radius: 0; }
+    .chat-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px; background: var(--teal); flex-shrink: 0;
+    }
+    html.theme-cyberpunk .chat-header { background: #ff0090; }
+    html.theme-minimal .chat-header { background: #111; }
+    html.theme-brutalist .chat-header { background: #000; }
+    .chat-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      font-weight: 700; font-size: 12px; color: #fff;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    html.theme-brutalist .chat-avatar { border-radius: 0; }
+    .chat-header-info { flex: 1; min-width: 0; }
+    .chat-name { font-size: 13px; font-weight: 600; color: #fff; }
+    .chat-status { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.72); }
+    .chat-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; display: inline-block; }
+    html.theme-brutalist .chat-dot { border-radius: 0; }
+    .chat-close {
+      width: 28px; height: 28px; border: none; background: rgba(255,255,255,0.15);
+      border-radius: 6px; cursor: pointer; color: #fff; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s; flex-shrink: 0;
+    }
+    .chat-close:hover { background: rgba(255,255,255,0.3); }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 10px;
+      scroll-behavior: smooth;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .chat-bubble {
+      max-width: 84%; padding: 10px 14px;
+      border-radius: 12px; font-size: 13px; line-height: 1.55; white-space: pre-line;
+    }
+    .chat-bubble.bot {
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); border-radius: 4px 12px 12px 12px; align-self: flex-start;
+    }
+    .chat-bubble.user {
+      background: var(--teal); color: #fff;
+      border-radius: 12px 4px 12px 12px; align-self: flex-end;
+    }
+    html.theme-cyberpunk .chat-bubble.bot { background: rgba(0,229,255,0.04); border-color: rgba(0,229,255,0.18); color: #c8c8ff; }
+    html.theme-cyberpunk .chat-bubble.user { background: #ff0090; }
+    html.theme-minimal .chat-bubble.user { background: #111; }
+    html.theme-brutalist .chat-bubble { border-radius: 0; }
+    html.theme-brutalist .chat-bubble.user { background: #000; }
+    .chat-chips { display: flex; flex-wrap: wrap; gap: 6px; align-self: flex-start; }
+    .chat-chip {
+      padding: 5px 12px; border-radius: 20px;
+      border: 1px solid var(--border); background: var(--bg);
+      color: var(--teal); font-size: 12px; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.15s;
+    }
+    .chat-chip:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+    html.theme-cyberpunk .chat-chip { border-color: rgba(0,229,255,0.28); color: #00e5ff; background: rgba(0,229,255,0.04); border-radius: 20px; }
+    html.theme-cyberpunk .chat-chip:hover { background: rgba(0,229,255,0.14); border-color: #00e5ff; color: #00e5ff; }
+    html.theme-brutalist .chat-chip { border-radius: 0; border: 2px solid #000; background: #fff; color: #000; }
+    html.theme-brutalist .chat-chip:hover { background: #ffee00; }
+    .chat-form {
+      display: flex; gap: 8px; padding: 12px 14px;
+      border-top: 1px solid var(--border); flex-shrink: 0; background: var(--white);
+    }
+    #chatInput {
+      flex: 1; padding: 9px 14px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 20px; font-size: 13px; color: var(--text);
+      font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s;
+    }
+    #chatInput:focus { border-color: var(--teal); }
+    html.theme-cyberpunk #chatInput { border-color: rgba(0,229,255,0.2); background: rgba(0,229,255,0.03); color: #c8c8ff; border-radius: 4px; }
+    html.theme-cyberpunk #chatInput:focus { border-color: rgba(0,229,255,0.5); }
+    html.theme-brutalist #chatInput { border-radius: 0; border: 2px solid #000; }
+    .chat-send {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border-radius: 50%; background: var(--teal); color: #fff;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .chat-send:hover { background: var(--teal-l); transform: scale(1.08); }
+    html.theme-cyberpunk .chat-send { background: #ff0090; border-radius: 4px; }
+    html.theme-minimal .chat-send { background: #111; }
+    html.theme-brutalist .chat-send { border-radius: 0; background: #000; border: 2px solid #000; }
+    .chat-typing {
+      display: flex; align-items: center; gap: 4px; padding: 10px 14px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 4px 12px 12px 12px; align-self: flex-start; width: 54px;
+    }
+    html.theme-brutalist .chat-typing { border-radius: 0; }
+    .chat-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: typingDot 1.4s infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingDot {
+      0%,60%,100% { opacity: 0.3; transform: scale(0.85); }
+      30% { opacity: 1; transform: scale(1.1); }
+    }
+    @media (max-width: 600px) {
+      .chat-widget { width: calc(100vw - 32px); right: 16px; bottom: 88px; }
+      .chat-fab { right: 16px; bottom: 16px; }
+      .modal-box { border-radius: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -984,6 +1338,9 @@
 
 <!-- Brutalist cursor block -->
 <div class="brut-cursor" id="brutCursor" aria-hidden="true"></div>
+
+<!-- Cyberpunk cursor -->
+<div class="cyber-cursor" id="cyberCursor" aria-hidden="true"></div>
 
 <!-- Linear Command Palette -->
 <div class="lnr-palette" id="lnrPalette" role="dialog" aria-modal="true" aria-label="Paleta de comandos">
@@ -1136,15 +1493,25 @@
     </p>
   </div>
   <div class="theme-toggles">
-    <button class="theme-btn is-active" data-theme="">
+    <button class="theme-btn is-active" data-theme="theme-apple">
+      <div class="theme-swatch swatch-apple"></div>
+      <span class="theme-btn-name">Principal</span>
+      <span class="theme-btn-desc">Élite · Glass · Orbe</span>
+    </button>
+    <button class="theme-btn" data-theme="">
       <div class="theme-swatch swatch-default"></div>
       <span class="theme-btn-name">Clásico</span>
       <span class="theme-btn-desc">Profesional y limpio</span>
     </button>
-    <button class="theme-btn" data-theme="theme-apple">
-      <div class="theme-swatch swatch-apple"></div>
-      <span class="theme-btn-name">Apple</span>
-      <span class="theme-btn-desc">Orbe · Glass · Floats</span>
+    <button class="theme-btn" data-theme="theme-cyberpunk">
+      <div class="theme-swatch swatch-cyberpunk"></div>
+      <span class="theme-btn-name">Cyberpunk</span>
+      <span class="theme-btn-desc">Neón · Glow · Glitch</span>
+    </button>
+    <button class="theme-btn" data-theme="theme-minimal">
+      <div class="theme-swatch swatch-minimal"></div>
+      <span class="theme-btn-name">Minimal</span>
+      <span class="theme-btn-desc">Limpio · Puro · Simple</span>
     </button>
     <button class="theme-btn" data-theme="theme-linear">
       <div class="theme-swatch swatch-linear"></div>
@@ -1471,6 +1838,20 @@
           </div>
         </div>
       </div>
+      <div class="contact-actions reveal reveal-delay-4">
+        <button class="btn-action btn-action-wa" id="openWaBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+          Enviar WhatsApp
+        </button>
+        <button class="btn-action btn-action-email" id="openEmailBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          Redactar correo
+        </button>
+      </div>
     </div>
     <div class="contact-visual reveal">
       <img src="images/portfolio/page5.png" alt="Optima Solución contacto" />
@@ -1484,12 +1865,105 @@
   opsolucion@gmail.com &nbsp;·&nbsp; 9993 097049
 </footer>
 
+<!-- ── WhatsApp Modal ─────────────────────────────────── -->
+<div class="modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-label="Enviar WhatsApp">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Enviar mensaje por WhatsApp</h3>
+      <button class="modal-close" id="waModalClose" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Escribe tu mensaje y te abriremos WhatsApp listo para enviar a <strong>Yamil Herrera</strong> (9993 097049).</p>
+      <div class="form-group">
+        <label for="waMsg">Mensaje</label>
+        <textarea id="waMsg" placeholder="Hola, me interesa conocer más sobre sus servicios de telecomunicaciones e ingeniería..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="waCancelBtn">Cancelar</button>
+      <a class="btn btn-wa-send" id="waSendBtn" href="#" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+        Abrir WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Email Modal ────────────────────────────────────── -->
+<div class="modal-overlay" id="emailModal" role="dialog" aria-modal="true" aria-label="Redactar correo">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Redactar correo</h3>
+      <button class="modal-close" id="emailModalClose" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Para</label>
+        <input type="text" value="opsolucion@gmail.com" readonly />
+      </div>
+      <div class="form-group">
+        <label for="emailSubj">Asunto</label>
+        <input type="text" id="emailSubj" placeholder="Consulta sobre servicios de ingeniería" />
+      </div>
+      <div class="form-group">
+        <label for="emailMsg">Mensaje</label>
+        <textarea id="emailMsg" placeholder="Hola, me gustaría solicitar información sobre..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="emailCancelBtn">Cancelar</button>
+      <button class="btn btn-primary" id="emailSendBtn">Abrir cliente de correo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Chatbot Widget ─────────────────────────────────── -->
+<div class="chat-widget" id="chatWidget" role="complementary" aria-label="Chat de soporte">
+  <div class="chat-header">
+    <div class="chat-avatar">OS</div>
+    <div class="chat-header-info">
+      <div class="chat-name">Optima Solución</div>
+      <div class="chat-status"><span class="chat-dot"></span> En línea</div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble bot">¡Hola! 👋 Soy el asistente de <strong>Optima Solución</strong>. ¿En qué puedo ayudarte hoy?</div>
+    <div class="chat-chips" id="chatChips">
+      <button class="chat-chip">¿Qué servicios ofrecen?</button>
+      <button class="chat-chip">¿Dónde están ubicados?</button>
+      <button class="chat-chip">¿Cómo los contacto?</button>
+      <button class="chat-chip">Ver proyectos</button>
+    </div>
+  </div>
+  <form class="chat-form" id="chatForm" autocomplete="off">
+    <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off" />
+    <button type="submit" class="chat-send" aria-label="Enviar">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<!-- ── Chat FAB ───────────────────────────────────────── -->
+<button class="chat-fab" id="chatFab" aria-label="Abrir asistente">
+  <svg class="icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+
 <script>
 (function () {
   'use strict';
 
   /* ── THEME SWITCHER ─────────────────────────────────────────── */
-  const THEMES = ['theme-apple', 'theme-linear', 'theme-raycast', 'theme-brutalist'];
+  const THEMES = ['theme-apple', 'theme-linear', 'theme-raycast', 'theme-brutalist', 'theme-cyberpunk', 'theme-minimal'];
   const themeButtons = document.querySelectorAll('.theme-btn');
 
   themeButtons.forEach(btn => {
@@ -1718,6 +2192,135 @@
   } else {
     revealEls.forEach(el => el.classList.add('visible'));
   }
+
+  /* ── CYBERPUNK CURSOR ───────────────────────────────────── */
+  const cyberCursor = document.getElementById('cyberCursor');
+  let ccX = 0, ccY = 0, ccTX = 0, ccTY = 0;
+  document.addEventListener('mousemove', e => { ccTX = e.clientX; ccTY = e.clientY; });
+  (function animCC() {
+    ccX += (ccTX - ccX) * 0.22;
+    ccY += (ccTY - ccY) * 0.22;
+    cyberCursor.style.left = ccX + 'px';
+    cyberCursor.style.top  = ccY + 'px';
+    requestAnimationFrame(animCC);
+  })();
+
+  /* ── WHATSAPP MODAL ─────────────────────────────────────── */
+  const waModal      = document.getElementById('waModal');
+  const emailModal   = document.getElementById('emailModal');
+  const openWaBtn    = document.getElementById('openWaBtn');
+  const openEmailBtn = document.getElementById('openEmailBtn');
+
+  function openModal(m)  { m.classList.add('is-open');    document.body.style.overflow = 'hidden'; }
+  function closeModal(m) { m.classList.remove('is-open'); document.body.style.overflow = ''; }
+
+  openWaBtn    && openWaBtn.addEventListener('click',    () => openModal(waModal));
+  openEmailBtn && openEmailBtn.addEventListener('click', () => openModal(emailModal));
+
+  document.getElementById('waModalClose').addEventListener('click',    () => closeModal(waModal));
+  document.getElementById('waCancelBtn').addEventListener('click',     () => closeModal(waModal));
+  document.getElementById('emailModalClose').addEventListener('click', () => closeModal(emailModal));
+  document.getElementById('emailCancelBtn').addEventListener('click',  () => closeModal(emailModal));
+
+  waModal.addEventListener('click',    e => { if (e.target === waModal)    closeModal(waModal); });
+  emailModal.addEventListener('click', e => { if (e.target === emailModal) closeModal(emailModal); });
+
+  document.getElementById('waSendBtn').addEventListener('click', function () {
+    const msg = document.getElementById('waMsg').value.trim() || 'Hola, me interesa conocer más sobre sus servicios.';
+    this.href = 'https://wa.me/529993097049?text=' + encodeURIComponent(msg);
+  });
+
+  document.getElementById('emailSendBtn').addEventListener('click', function () {
+    const subj = document.getElementById('emailSubj').value.trim() || 'Consulta sobre servicios';
+    const body = document.getElementById('emailMsg').value.trim() || '';
+    window.location.href = 'mailto:opsolucion@gmail.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(waModal); closeModal(emailModal); }
+  });
+
+  /* ── CHATBOT ─────────────────────────────────────────────── */
+  const chatFabEl   = document.getElementById('chatFab');
+  const chatWidgetEl= document.getElementById('chatWidget');
+  const chatCloseEl = document.getElementById('chatClose');
+  const chatMsgsEl  = document.getElementById('chatMessages');
+  const chatFormEl  = document.getElementById('chatForm');
+  const chatInputEl = document.getElementById('chatInput');
+  let chatOpen = false;
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    chatWidgetEl.classList.toggle('is-open', chatOpen);
+    chatFabEl.classList.toggle('is-open', chatOpen);
+    if (chatOpen) setTimeout(() => chatInputEl.focus(), 280);
+  }
+  chatFabEl.addEventListener('click', toggleChat);
+  chatCloseEl.addEventListener('click', toggleChat);
+
+  const BOT_KB = [
+    { k: ['servicio','servicios','ofrecen','hacen','oferta','línea'], r: 'Ofrecemos 8 líneas de servicio:\n📡 Levantamientos EA\n🏗️ Torres Autosoportadas\n🔌 Sistemas de Tierras\n💡 Fibra Óptica\n📐 Proyectos Ejecutivos\n🏠 Arquitectura y Renders 3D\n\n¿Te interesa alguno en particular?' },
+    { k: ['precio','costo','cuánto','cotización','presupuesto','cobran'], r: 'Los precios varían según el alcance del proyecto. ¡Contáctanos para una cotización personalizada sin compromiso!\n📞 9993 097049\n✉️ opsolucion@gmail.com' },
+    { k: ['contacto','teléfono','llamar','número','celular','whatsapp','comunicar'], r: 'Puedes contactar a Yamil Herrera directamente:\n📞 9993 097049\n✉️ opsolucion@gmail.com\n\nO usa los botones de WhatsApp y correo en la sección de Contacto.' },
+    { k: ['correo','email','mail','opsolucion'], r: 'Escríbenos a opsolucion@gmail.com o usa el botón "Redactar correo" en la sección de Contacto de esta página.' },
+    { k: ['ubicación','dónde','ciudad','presencia','cdmx','mérida','cancún','merida','cancun','oficina'], r: 'Tenemos presencia en:\n🏙️ CDMX — Ciudad de México\n🌿 Mérida — Yucatán\n🌊 Cancún — Quintana Roo\n🗺️ República Mexicana (todo el país)' },
+    { k: ['cliente','clientes','empresa','mtp','even','telecom','center line','center'], r: 'Trabajamos con empresas líderes del sector telecom:\n• MTP\n• Even Telecom\n• Center Line\n\nY desarrollamos proyectos para ALTÁN Redes, AT&T, Axtel, Total Play y CFE.' },
+    { k: ['proyecto','proyectos','portafolio','obra','trabajos'], r: 'Proyectos destacados:\n🏗️ Torre Autosoportada 48m — ALTÁN Redes / Center Line\n💡 40+ sitios de Fibra Óptica — Even Telecom / AT&T\n🏠 Proyectos Arquitectónicos — Residencial Sureste MX' },
+    { k: ['norma','normativa','cfe','altan','att','axtel','total play','cumplimiento'], r: 'Trabajamos bajo las normas y estándares de ALTÁN Redes, AT&T, Axtel, Total Play y CFE. Garantizamos cumplimiento normativo en todos nuestros proyectos ejecutivos.' },
+    { k: ['torre','torres','autosoportada','48m'], r: 'Diseñamos y desarrollamos proyectos de torres autosoportadas. Proyecto destacado: Torre 48m para ALTÁN Redes con Center Line.' },
+    { k: ['fibra','óptica','optica'], r: 'Hemos realizado más de 40 levantamientos y proyectos de Fibra Óptica para Even Telecom y AT&T a nivel nacional.' },
+    { k: ['arquitectura','arquitectónico','arquitectonico','render','renders','residencial','casa'], r: 'Servicios de arquitectura con planta arquitectónica completa, renders exteriores/interiores y diseño contemporáneo para proyectos residenciales.' },
+    { k: ['levantamiento','ea','estado actual','sitio'], r: 'Realizamos Levantamientos de Estado Actual (EA) en sitio, documentando infraestructura existente con toda la información técnica necesaria para el proyecto ejecutivo.' },
+    { k: ['yamil','herrera','contacto principal'], r: 'Yamil Herrera es nuestro contacto principal. Puedes encontrarlo en:\n📞 9993 097049\n✉️ opsolucion@gmail.com' },
+    { k: ['hola','buenas','buenos','hey','hi','hello','buen día','saludos'], r: '¡Hola! 😊 Soy el asistente virtual de Optima Solución. Puedo informarte sobre:\n• Servicios que ofrecemos\n• Proyectos realizados\n• Cómo contactarnos\n• Dónde estamos ubicados\n\n¿Qué quieres saber?' },
+    { k: ['gracias','thanks','excelente','perfecto','ok','listo'], r: '¡Con mucho gusto! 😊 Si necesitas más información o deseas iniciar un proyecto, contáctanos al 9993 097049. ¡Estamos para servirte!' },
+  ];
+
+  function getBotReply(input) {
+    const t = input.toLowerCase();
+    for (const { k, r } of BOT_KB) {
+      if (k.some(kw => t.includes(kw))) return r;
+    }
+    return 'No tengo esa información específica, pero nuestro equipo puede ayudarte:\n📞 9993 097049\n✉️ opsolucion@gmail.com\n\n¡Yamil Herrera estará feliz de atenderte!';
+  }
+
+  function addMsg(text, role) {
+    const b = document.createElement('div');
+    b.className = 'chat-bubble ' + role;
+    b.textContent = text;
+    chatMsgsEl.appendChild(b);
+    chatMsgsEl.scrollTop = chatMsgsEl.scrollHeight;
+  }
+
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'chat-typing'; el.id = 'chatTypingEl';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    chatMsgsEl.appendChild(el);
+    chatMsgsEl.scrollTop = chatMsgsEl.scrollHeight;
+    return el;
+  }
+
+  function sendUserMsg(text) {
+    if (!text.trim()) return;
+    const chips = document.getElementById('chatChips');
+    if (chips) chips.remove();
+    addMsg(text, 'user');
+    const typing = showTyping();
+    const delay = 650 + Math.random() * 450;
+    setTimeout(() => { typing.remove(); addMsg(getBotReply(text), 'bot'); }, delay);
+  }
+
+  chatFormEl.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = chatInputEl.value.trim();
+    chatInputEl.value = '';
+    sendUserMsg(v);
+  });
+
+  document.querySelectorAll('.chat-chip').forEach(chip => {
+    chip.addEventListener('click', () => sendUserMsg(chip.textContent));
+  });
 
 })();
 </script>
